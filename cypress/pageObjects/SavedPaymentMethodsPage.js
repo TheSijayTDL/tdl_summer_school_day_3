@@ -10,7 +10,23 @@ class SavedPaymentPage extends BasePage {
   }
 
   static get addName() {
-    return cy.get("#mat-input-32");
+    return cy.get("#mat-input-1");
+  }
+
+  static get addCardNumber() {
+    return cy.get("#mat-input-2");
+  }
+
+  static get addExpiryMonth() {
+    return cy.get("#mat-input-3");
+  }
+
+  static get addExpiryYear() {
+    return cy.get("#mat-input-4");
+  }
+
+  static get validateCard() {
+    return cy.get("[class*='mat-row cdk-row ng-star-inserted']");
   }
 }
 

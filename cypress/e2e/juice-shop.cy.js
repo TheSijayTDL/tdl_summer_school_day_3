@@ -322,15 +322,18 @@ describe("Juice-shop with Auto login", () => {
       .click();
   // Create page object - SavedPaymentMethodsPage
   // Click Add new card
-    SavedPaymentPage.addCard.click();
+    SavedPaymentPage.addCard.click()
   // Fill in Name
-    SavedPaymentPage.addName
-    .contains("Name")
-    .type("test", { force: true });
+    SavedPaymentPage.addName.type("Ruslans");
   // Fill in Card Number
+    SavedPaymentPage.addCardNumber.type("1234567812345678")
   // Set expiry month to 7
+    SavedPaymentPage.addExpiryMonth.select("7");
   // Set expiry year to 2090
+    SavedPaymentPage.addExpiryYear.select("2090");
   // Click Submit button
+    HomePage.submitReview.click();
   // Validate that the card shows up in the list
+    SavedPaymentPage.validateCard.last().should("contain.text", "************5678 Ruslans7/2090");
   });
 });

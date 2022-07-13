@@ -31,21 +31,49 @@ describe("Juice-shop without auto login", () => {
 
   it("Registration", () => {
     // Click Account button
+    HomePage.accountButton.click();
     // Login button
+    HomePage.loginButton.click();
+    LoginPage.checkLogin.should("be.visible");
     // Click "Not yet a customer?"
+    LoginPage.startRegistration.click();
     // Find - how to generate random number in JS
+    function getRandom(max) {
+      return Math.floor(Math.random() * max);
+    }
     // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
-    // Save that email address to some variable
+    let email = "email_" + getRandom(9999) + "@gmail.com";
+    RegistrationPage.regEmail.type(email);
     // Fill in password field and repeat password field with same password
+    let password = "password";
+    RegistrationPage.regPassword.type(password);
+    RegistrationPage.regPasswordValidate.type(password);
     // Click on Security Question menu
+    RegistrationPage.regQuestion.click();
     // Select  "Name of your favorite pet?"
+    RegistrationPage.regChooseQuestion
+      .trigger("mousedown")
+      .contains("Name of your favorite pet?")
+      .click();
     // Fill in answer
+    RegistrationPage.regAnswer.type("Test");
     // Click Register button
+    RegistrationPage.regSubmit
+      .should("be.visible")
+      .click();
     // Set email value to previously created email
+    LoginPage.checkLogin.should("be.visible");
+    LoginPage.typeEmail.type(email);
     // Set password value to previously used password value
+    LoginPage.typePassword.type(password);
     // Click login button
+    LoginPage.typeSubmit.should("be.visible").click();
     // Click Account button
     // Validate that account name (with previously created email address) appears in the menu section
+    LoginPage.navBar.click()
+      .get("#mat-menu-panel-0")
+      .contains(email)
+      .should("be.visible");
   });
 });
 

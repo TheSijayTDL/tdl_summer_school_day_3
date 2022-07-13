@@ -5,8 +5,32 @@ class RegistrationPage extends BasePage {
     return '/#/register';
   }
 
-  static get elementName(){
-    return cy.get('elementSelector');
+  static get regEmail(){
+    return cy.get("#emailControl");
+  }
+
+  static get regPassword(){
+    return cy.get("#passwordControl");
+  }
+
+  static get regPasswordValidate(){
+    return cy.get("#repeatPasswordControl");
+  }
+
+  static get regQuestion(){
+    return cy.get(".mat-select-placeholder");
+  }
+
+  static get regChooseQuestion(){
+    return cy.get("#mat-option-9");
+  }
+
+  static get regAnswer(){
+    return cy.get("#securityAnswerControl");
+  }
+
+  static get regSubmit(){
+    return cy.get("#registerButton");
   }
 }
 

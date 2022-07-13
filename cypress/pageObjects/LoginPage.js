@@ -24,6 +24,10 @@ class LoginPage extends BasePage {
   static get navBar() {
     return cy.get("#navbarAccount");
   }
+
+  static get startRegistration() {
+    return cy.get("#newCustomerLink");
+  }
 }
 
 export default LoginPage;
